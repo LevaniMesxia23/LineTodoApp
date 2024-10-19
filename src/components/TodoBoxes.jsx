@@ -1,10 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTodos } from "../api/Todos";
+import { MyContext } from "../context/Context";
+import { useContext } from "react";
+
 
 function TodoBoxes() {
+  const {user} = useContext(MyContext)
+  const userId = user?.id
+
   const { data: todos, isLoading } = useQuery({
-    queryFn: () => getTodos(),
-    queryKey: ["todos"],
+    queryFn: () => getTodos(userId),
+    queryKey: ["todos", userId]
   });
 
   if (isLoading) {

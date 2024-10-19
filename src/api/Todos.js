@@ -1,9 +1,10 @@
 import { supabase } from '../config/supabaseClient';
 
-export const getTodos = async () => {
+export const getTodos = async (user_id) => {
   const { data, error } = await supabase
     .from('todos')
-    .select('*');
+    .select('*')
+    .eq('user_id', user_id);
 
   if (error) throw error;
   return data;
