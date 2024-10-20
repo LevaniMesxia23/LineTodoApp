@@ -6,6 +6,7 @@ import { ClickDots } from "../icons/icons";
 import PanelBox from "./PanelBox";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import DateInput from "./DateInput";
 
 function TodoBoxes() {
   const { user, setTasks, tasks, clickDot } = useContext(MyContext);
@@ -46,10 +47,11 @@ function TodoBoxes() {
     <div className="grid gap-4 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {todos?.map((todo, index) => (
         <div
-          key={index}
-          className="bg-white rounded-lg shadow-md p-4 overflow-hidden border border-gray-200 flex flex-col "
+        key={index}
+        className="bg-white rounded-lg shadow-md p-4 overflow-hidden border border-gray-200 flex flex-col "
         >
-          <span className="block text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
+        <DateInput />
+          <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
             {todo.description}
           </span>
           <div className="flex justify-end mt-[1.62rem]">
