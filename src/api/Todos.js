@@ -30,11 +30,12 @@ export const markImportant = async ({ userId, updatedTask, taskId }) => {
   return data;
 };
 
-export const markcomplate = async (user_id) => {
+export const markcomplate = async ({userId, updatedTask, taskId}) => {
   const { data, error } = await supabase
     .from("todos")
-    .eq({ complate: true })
-    .eq("user_id", user_id);
+    .update({complate: updatedTask.complate})
+    .eq("id", taskId)
+    .eq("user_id", userId);
 
   if (error) throw error;
   return data;

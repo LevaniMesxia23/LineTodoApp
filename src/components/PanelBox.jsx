@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { UseToggleImportant } from "../hooks/useToggleImportant";
+import { UseToggleComplate } from "../hooks/useToggleComplate";
+
 
 function PanelBox({ taskId, tasks, setTasks, user }) {
   const handleToggleImportant = () => {
@@ -7,10 +9,19 @@ function PanelBox({ taskId, tasks, setTasks, user }) {
     console.log(tasks);
   };
 
+  const handleToggleComplate = () => {
+    UseToggleComplate(taskId, tasks, setTasks, user)
+    console.log(tasks);
+    
+  }
+
   return (
     <div>
       <div onClick={handleToggleImportant}>
         Click to Mark Important
+      </div>
+      <div onClick={handleToggleComplate}>
+        Click to Mark Complate
       </div>
     </div>
   );
