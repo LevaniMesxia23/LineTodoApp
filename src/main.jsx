@@ -6,6 +6,7 @@ import { ClerkProvider } from "@clerk/clerk-react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY;
+import "./i18n"
 
 if (!PUBLISHABLE_KEY) {
   throw new Error("Key Qas Not Found");

@@ -1,18 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTodos } from "../api/Todos";
 import { MyContext } from "../context/Context";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ClickDots } from "../icons/icons";
 import PanelBox from "./PanelBox";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function TodoBoxes() {
-  const { user, setTasks, tasks } = useContext(MyContext);
+  const { user, setTasks, tasks, clickDot } = useContext(MyContext);
   const userId = user?.id;
-  const [, setClickDot] = useState(false);
 
-  const handleClickDots = (index) => {
-    setClickDot((prevIndex) => (prevIndex === index ? null : index));
+  useEffect(() => {
+    AOS.init({ duration: 500 });
+  }, []);
+
+  const useTaskContext = () => {
+    const { setClickDot } = useContext(MyContext);
+
+    const handleClickDots = (index) => {
+      setClickDot((prevIndex) => (prevIndex === index ? null : index));
+    };
+
+    return { handleClickDots };
   };
+
+  const { handleClickDots } = useTaskContext();
 
   const { data: todos, isLoading } = useQuery({
     queryFn: () => getTodos(userId),
@@ -34,21 +47,24 @@ function TodoBoxes() {
       {todos?.map((todo, index) => (
         <div
           key={index}
-          className="bg-white rounded-lg shadow-md p-4 overflow-hidden border border-gray-200 flex flex-col gap-[1.62rem]"
+          className="bg-white rounded-lg shadow-md p-4 overflow-hidden border border-gray-200 flex flex-col "
         >
           <span className="block text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
             {todo.description}
           </span>
-          <div className="flex justify-end">
+          <div className="flex justify-end mt-[1.62rem]">
             <ClickDots onClick={() => handleClickDots(index)} />
           </div>
-          <PanelBox
-            userId={userId}
-            taskId={todo.id}
-            tasks={tasks}
-            setTasks={setTasks}
-            user={user}
-          />
+          {clickDot === index && (
+            <PanelBox
+              userId={userId}
+              taskId={todo.id}
+              tasks={tasks}
+              setTasks={setTasks}
+              user={user}
+              index={index}
+            />
+          )}
         </div>
       ))}
     </div>

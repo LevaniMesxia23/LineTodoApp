@@ -11,7 +11,9 @@ const defaultContextValue = {
   isDesktop: Boolean,
   user: null,
   tasks: [],
-  setTasks: () => {}
+  setTasks: () => {},
+  clickDot: false,
+  setClickDot: () => {}
 };
 
 export const MyContext = createContext(defaultContextValue);
@@ -20,6 +22,7 @@ export const MyProvider = ({ children }) => {
   const [description, setDescription] = useState("");
   const [burgerClicked, setBurgerClicked] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [clickDot, setClickDot] = useState(false);
   const { user } = useUser();
 
   const isDesktop = useMediaQuery("only screen and (min-width : 1024px)");
@@ -35,6 +38,8 @@ export const MyProvider = ({ children }) => {
         user,
         tasks,
         setTasks,
+        clickDot, 
+        setClickDot
       }}
     >
       {children}
