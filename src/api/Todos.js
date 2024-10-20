@@ -1,10 +1,10 @@
-import { supabase } from '../config/supabaseClient';
+import { supabase } from "../config/supabaseClient";
 
 export const getTodos = async (user_id) => {
   const { data, error } = await supabase
-    .from('todos')
-    .select('*')
-    .eq('user_id', user_id);
+    .from("todos")
+    .select("*")
+    .eq("user_id", user_id);
 
   if (error) throw error;
   return data;
@@ -12,48 +12,49 @@ export const getTodos = async (user_id) => {
 
 export const addTodo = async ({ description, user_id }) => {
   const { data, error } = await supabase
-    .from('todos')
+    .from("todos")
     .insert([{ description, user_id, complate: false, important: false }]);
 
   if (error) throw error;
   return data;
 };
 
-export const markImportant = async (id) => {
+export const markImportant = async ({ userId, updatedTask, taskId }) => {
   const { data, error } = await supabase
-    .from('todos')
-    .update({ important: true })
-    .eq('id', id);
+    .from("todos")
+    .update({ important: updatedTask.important })
+    .eq("id", taskId)
+    .eq("user_id", userId);
 
   if (error) throw error;
   return data;
 };
 
-export const markcomplate = async (id) => {
+export const markcomplate = async (user_id) => {
   const { data, error } = await supabase
-    .from('todos')
-    .update({ complate: true })
-    .eq('id', id);
+    .from("todos")
+    .eq({ complate: true })
+    .eq("user_id", user_id);
 
   if (error) throw error;
   return data;
 };
 
-export const updateTodo = async ({ id, updatedData }) => {
+export const updateTodo = async ({ user_id, updatedData }) => {
   const { data, error } = await supabase
-    .from('todos')
+    .from("todos")
     .update(updatedData)
-    .eq('id', id);
+    .eq("user_id", user_id);
 
   if (error) throw error;
   return data;
 };
 
-export const deleteTodo = async (id) => {
+export const deleteTodo = async (user_id) => {
   const { data, error } = await supabase
-    .from('todos')
+    .from("todos")
     .delete()
-    .eq('id', id);
+    .eq("user_id", user_id);
 
   if (error) throw error;
   return data;

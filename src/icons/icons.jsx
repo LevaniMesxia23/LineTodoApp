@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 export function DateIcon() {
   return (
     <div>
@@ -201,7 +201,7 @@ export function SearchIcon() {
   );
 }
 
-export function ClickDots({onClick}) {
+export function ClickDots({ onClick }) {
   return (
     <svg
       onClick={onClick}
@@ -221,6 +221,31 @@ export function ClickDots({onClick}) {
     </svg>
   );
 }
+
+export function PlusIcon({className}) {
+  return (
+    <div className={className}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+      >
+        <path
+          d="M12 6V18M18 12H6"
+          stroke="#252931"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+      </svg>
+    </div>
+  );
+}
+
 ClickDots.propTypes = {
-  onClick: PropTypes.func.isRequired, 
+  onClick: PropTypes.func.isRequired,
+};
+PlusIcon.propTypes = {
+  className: PropTypes.string,
 };

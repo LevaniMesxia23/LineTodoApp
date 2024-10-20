@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { MyContext } from "../context/Context";
 import useAddTodo from "../hooks/useAddTodo";
+import { PlusIcon } from "../icons/icons";
 
 function TodoSearch() {
   const { description, setDescription, user } = useContext(MyContext);
@@ -15,21 +16,7 @@ function TodoSearch() {
     <div>
       <div className="flex justify-center mt-8 lg:ml-[25%]">
         <div className="flex items-center relative w-full max-w-lg mb-[2.5rem]">
-          <svg
-            className="absolute ml-7"
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-          >
-            <path
-              d="M12 6V18M18 12H6"
-              stroke="#252931"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-            />
-          </svg>
+          <PlusIcon className="absolute ml-7"/>
           <input
             type="text"
             name="task"

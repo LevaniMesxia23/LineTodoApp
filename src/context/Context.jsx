@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import PropTypes from "prop-types";
-import { useUser } from "@clerk/clerk-react"
+import { useUser } from "@clerk/clerk-react";
 import { useMediaQuery } from "@uidotdev/usehooks";
 
 const defaultContextValue = {
@@ -9,7 +9,9 @@ const defaultContextValue = {
   burgerClicked: false,
   setBurgerClicked: () => {},
   isDesktop: Boolean,
-  user: null
+  user: null,
+  tasks: [],
+  setTasks: () => {}
 };
 
 export const MyContext = createContext(defaultContextValue);
@@ -17,21 +19,22 @@ export const MyContext = createContext(defaultContextValue);
 export const MyProvider = ({ children }) => {
   const [description, setDescription] = useState("");
   const [burgerClicked, setBurgerClicked] = useState(false);
-  const {user} = useUser()
+  const [tasks, setTasks] = useState([]);
+  const { user } = useUser();
 
-  const isDesktop = useMediaQuery(
-    "only screen and (min-width : 1024px)"
-  );
+  const isDesktop = useMediaQuery("only screen and (min-width : 1024px)");
 
   return (
     <MyContext.Provider
       value={{
-        description,    
-        setDescription, 
+        description,
+        setDescription,
         burgerClicked,
         setBurgerClicked,
         isDesktop,
-        user
+        user,
+        tasks,
+        setTasks,
       }}
     >
       {children}
