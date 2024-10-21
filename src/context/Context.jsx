@@ -12,7 +12,9 @@ const defaultContextValue = {
   tasks: [],
   setTasks: () => {},
   clickDot: false,
-  setClickDot: () => {}
+  setClickDot: () => {},
+  searchTodo: () => {},
+  setSearchTodo: () => {}
 };
 
 export const MyContext = createContext(defaultContextValue);
@@ -23,6 +25,7 @@ export const MyProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
   const [clickDot, setClickDot] = useState(false);
   const { user } = useUser();
+  const [searchTodo, setSearchTodo] = useState('')
 
   const isDesktop = useMediaQuery("only screen and (min-width : 1024px)");
   const isMobile = useMediaQuery("only screen and (max-width : 768px)")
@@ -41,6 +44,8 @@ export const MyProvider = ({ children }) => {
         setTasks,
         clickDot, 
         setClickDot,
+        searchTodo,
+        setSearchTodo,
         isMobile,
         isMedium
       }}

@@ -51,9 +51,9 @@ function TodoBoxes() {
     <TodoSearch />
     
     <div
-        className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-2 ${
-          isMedium && "grid-cols-2 gap-2"
-        } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-2`}
+        className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-6 ${
+          isMedium && "grid-cols-2 gap-6"
+        } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
       >
       {taskImportant?.map((todo, index) => (
         <div

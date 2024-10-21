@@ -9,7 +9,7 @@ import "aos/dist/aos.css";
 import DateInput from "./DateInput";
 
 function TodoBoxes() {
-  const { user, setTasks, tasks, clickDot, isMedium } = useContext(MyContext);
+  const { user, setTasks, tasks, clickDot, isMedium, searchTodo } = useContext(MyContext);
   const userId = user?.id;
 
   useEffect(() => {
@@ -45,14 +45,16 @@ function TodoBoxes() {
 
   return (
     <div
-        className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-2 ${
-          isMedium && "grid-cols-2 gap-2"
-        } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-2`}
-      >
-      {tasks?.map((todo, index) => (
+      className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 ${
+        isMedium && "grid-cols-2 gap-6"
+      } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
+    >
+      {tasks?.filter(item => {
+        return searchTodo.toLowerCase() === '' ? true : item.description.toLowerCase().includes(searchTodo.toLowerCase());
+      }).map((todo, index) => (
         <div
           key={index}
-          className="relative bg-white rounded-lg shadow-md p-4  border border-gray-200 flex flex-col" 
+          className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
         >
           <DateInput />
           <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
@@ -75,6 +77,6 @@ function TodoBoxes() {
       ))}
     </div>
   );
-}  
+}
 
 export default TodoBoxes;

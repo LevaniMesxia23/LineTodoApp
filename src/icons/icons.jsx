@@ -181,10 +181,11 @@ export function DeleteIcon() {
   );
 }
 
-export function SearchIcon() {
+export function SearchIcon({ onClick }) {
   return (
     <div>
       <svg
+        onClick={onClick}
         // className="absolute left-[3rem] top-[10px] "
         xmlns="http://www.w3.org/2000/svg"
         width="18"
@@ -243,12 +244,6 @@ export function PlusIcon({ className }) {
   );
 }
 
-ClickDots.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
-PlusIcon.propTypes = {
-  className: PropTypes.string,
-};
 
 export function ImportantIcon() {
   return (
@@ -306,4 +301,14 @@ export function CircleIcon() {
       </svg>
     </div>
   );
+}
+
+ClickDots.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+PlusIcon.propTypes = {
+  className: PropTypes.string,
+};
+SearchIcon.propTypes = {
+  onClick: PropTypes.func.isRequired
 }
