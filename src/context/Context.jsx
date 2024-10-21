@@ -26,6 +26,7 @@ export const MyProvider = ({ children }) => {
   const { user } = useUser();
 
   const isDesktop = useMediaQuery("only screen and (min-width : 1024px)");
+  const isMobile = useMediaQuery("only screen and (max-width : 768px)")
 
   return (
     <MyContext.Provider
@@ -39,7 +40,8 @@ export const MyProvider = ({ children }) => {
         tasks,
         setTasks,
         clickDot, 
-        setClickDot
+        setClickDot,
+        isMobile
       }}
     >
       {children}

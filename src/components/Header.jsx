@@ -3,6 +3,7 @@ import { MyContext } from "../context/Context";
 import { UserButton } from "@clerk/clerk-react";
 import { useContext } from "react";
 import { SearchIcon } from "../icons/icons";
+import SideNav from "./SideNav";
 export default function Header() {
   const { burgerClicked, setBurgerClicked, isDesktop } = useContext(MyContext);
 
@@ -21,6 +22,7 @@ export default function Header() {
           />
         </div>
       )}
+      <SideNav />
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

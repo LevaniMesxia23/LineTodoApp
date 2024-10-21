@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@media (max-width: 589px) {
+  .hidden-on-small {
+    display: none;
+  }
+  .clear-margins{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
