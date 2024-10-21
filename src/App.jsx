@@ -6,6 +6,7 @@ import SignUpPage from "./pages/SignUpPage";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MyProvider } from './context/Context'; 
 import ImportantPage from "./pages/ImportantPage";
+import ResultsPage from "./pages/ResultPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/important" element={<ImportantPage />} />
+              <Route path="/resultspage" element={<ResultsPage />} />
 
             </Route>
           </Route>
