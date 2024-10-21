@@ -5,12 +5,15 @@ import { useContext, useState } from "react";
 import { CircleIcon, SearchIcon } from "../icons/icons";
 import SideNav from "./SideNav";
 import LanguageChanger from "./LanguageChanger";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const { burgerClicked, setBurgerClicked, isDesktop, setSearchTodo,isMobile } =
     useContext(MyContext);
   const [openSearchInput, setOpenSearchInput] = useState(false);
   const [hideCircle, setHideCircle] = useState(false)
+
+  const { t } = useTranslation();
 
   const handleBurger = () => {
     setBurgerClicked(!burgerClicked);
@@ -78,7 +81,7 @@ export default function Header() {
             className={`bg-[#E7E8EA]  ${isMobile ? "pl-[20px]" : "pl-[48px]"} text-[1.4rem] font-[400] ml-8 rounded-[0.8rem] h-[40px] w-[50%]  `}
             type="text"
             name="search"
-            placeholder="Search"
+            placeholder={t("Search")}
             onChange={(e) => setSearchTodo(e.target.value)}
           />
         )}
