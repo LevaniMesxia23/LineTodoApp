@@ -30,10 +30,10 @@ export const markImportant = async ({ userId, updatedTask, taskId }) => {
   return data;
 };
 
-export const markcomplate = async ({userId, updatedTask, taskId}) => {
+export const markcomplate = async ({ userId, updatedTask, taskId }) => {
   const { data, error } = await supabase
     .from("todos")
-    .update({complate: updatedTask.complate})
+    .update({ complate: updatedTask.complate })
     .eq("id", taskId)
     .eq("user_id", userId);
 
@@ -51,12 +51,17 @@ export const updateTodo = async ({ user_id, updatedData }) => {
   return data;
 };
 
-export const deleteTodo = async (user_id) => {
+export const deleteTodo = async (userId, taskId) => {
   const { data, error } = await supabase
     .from("todos")
     .delete()
-    .eq("user_id", user_id);
+    .eq("id", taskId)
+    .eq("user_id", userId);
 
-  if (error) throw error;
+  if (error) {
+    console.error("Error deleting the task:", error.message || error);
+    throw error;
+  }
+
   return data;
 };
