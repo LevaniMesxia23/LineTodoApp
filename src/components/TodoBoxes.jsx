@@ -9,7 +9,7 @@ import "aos/dist/aos.css";
 import DateInput from "./DateInput";
 
 function TodoBoxes() {
-  const { user, setTasks, tasks, clickDot } = useContext(MyContext);
+  const { user, setTasks, tasks, clickDot, isMedium } = useContext(MyContext);
   const userId = user?.id;
 
   useEffect(() => {
@@ -44,7 +44,11 @@ function TodoBoxes() {
   }
 
   return (
-    <div className="grid gap-4 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div
+        className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-2 ${
+          isMedium && "grid-cols-2 gap-2"
+        } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-2`}
+      >
       {tasks?.map((todo, index) => (
         <div
           key={index}
