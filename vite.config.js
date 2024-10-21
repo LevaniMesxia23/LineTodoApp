@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     rollupOptions: {
-      external: ['@clerk/clerk-react', 'i18next', 'react-i18next']
+      external: ['@clerk/clerk-react', 'i18next', 'react-i18next', 'react-router-dom']
     }
   },
   optimizeDeps: {
