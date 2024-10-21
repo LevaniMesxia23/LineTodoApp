@@ -7,15 +7,18 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { MyProvider } from './context/Context'; 
 import ImportantPage from "./pages/ImportantPage";
 import ResultsPage from "./pages/ResultPage";
+import UserLayout from "./layouts/UserLayout";
 
 function App() {
   return (
     <MyProvider>
       <BrowserRouter>
         <Routes>
-          <Route path="/signin" element={<SignInPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
-          
+          <Route element={<UserLayout />}>
+            <Route path="/signin" element={<SignInPage />} />
+            <Route path="/signup" element={<SignUpPage />} />
+          </Route>
+
           <Route element={<ProtectedRoute />}>
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
