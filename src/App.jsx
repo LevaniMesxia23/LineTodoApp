@@ -1,5 +1,5 @@
 import ProtectedRoute from "./components/ProtectedRoute";
-import Layout from "./layouts/layout";
+import Layout from "./layouts/Layout"
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
