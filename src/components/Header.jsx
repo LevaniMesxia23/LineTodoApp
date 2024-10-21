@@ -23,7 +23,6 @@ export default function Header() {
     setOpenSearchInput(!openSearchInput);
     setHideCircle(!hideCircle)
   };
-  console.log(openSearchInput);
 
   return (
     <header className="flex justify-between items-center p-4 bg-white shadow-md relative z-20 lg:ml-[25%]">
