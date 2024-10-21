@@ -3,10 +3,11 @@ import { getTodos } from "../api/Todos";
 import { MyContext } from "../context/Context";
 import { useContext, useEffect } from "react";
 import { ClickDots } from "../icons/icons";
-import PanelBox from "./PanelBox";
+import PanelBox from "../components/PanelBox";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import DateInput from "./DateInput";
+import DateInput from "../components/DateInput";
+import TodoSearch from "../components/TodoSearch";
 
 function TodoBoxes() {
   const { user, setTasks, tasks, clickDot } = useContext(MyContext);
@@ -43,9 +44,14 @@ function TodoBoxes() {
     return <h1>Loading...</h1>;
   }
 
+  const taskImportant = tasks.filter(task => task.important)
+
   return (
+    <>
+    <TodoSearch />
+    
     <div className="grid gap-4 p-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {tasks?.map((todo, index) => (
+      {taskImportant?.map((todo, index) => (
         <div
           key={index}
           className="bg-white rounded-lg shadow-md p-4 overflow-hidden border border-gray-200 flex flex-col "
@@ -70,6 +76,7 @@ function TodoBoxes() {
         </div>
       ))}
     </div>
+  </>
   );
 }
 

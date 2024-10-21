@@ -2,7 +2,7 @@ import { Twirl as Hamburger } from "hamburger-react";
 import { MyContext } from "../context/Context";
 import { UserButton } from "@clerk/clerk-react";
 import { useContext } from "react";
-import { SearchIcon } from "../icons/icons";
+import { CircleIcon, SearchIcon } from "../icons/icons";
 import SideNav from "./SideNav";
 export default function Header() {
   const { burgerClicked, setBurgerClicked, isDesktop } = useContext(MyContext);
@@ -11,7 +11,7 @@ export default function Header() {
     setBurgerClicked(!burgerClicked);
   };
   return (
-    <header className="flex justify-between items-center p-4 bg-white shadow-md relative z-20">
+    <header className="flex justify-between items-center p-4 bg-white shadow-md relative z-20 " >
       {!isDesktop && (
         <div className=" flex gap-4 items-center">
           <Hamburger
@@ -19,20 +19,13 @@ export default function Header() {
             toggle={handleBurger}
             size={24}
             color="black"
+            style={{ width: "calc(100% + 31px)" }}
           />
         </div>
       )}
       <SideNav />
-      <div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="40"
-          height="40"
-          viewBox="0 0 40 40"
-          fill="none"
-        >
-          <circle cx="20" cy="20" r="20" fill="#D9D9D9" />
-        </svg>
+      <div className="w-12 h-12  rounded-full flex items-center justify-center mx-auto ">
+        <CircleIcon className=""/>
       </div>
 
       <div className=" flex gap-4 items-center">
