@@ -6,6 +6,13 @@ import { PlusIcon } from "../icons/icons";
 function TodoSearch() {
   const { description, setDescription, user } = useContext(MyContext);
   const { mutateAsync: addTodoMutation } = useAddTodo();
+
+  const handleAddTodo = async () => {
+    if (description.trim() !== "") {
+      await addTodoMutation({ description, user_id: user.id });
+      setDescription("")
+    }
+  };
   const handleKeyPress = async (e) => {
     if (e.key === "Enter" && description.trim() !== "") {
       await addTodoMutation({ description, user_id: user.id });
@@ -16,7 +23,7 @@ function TodoSearch() {
     <div>
       <div className="flex justify-center mt-8 lg:ml-[25%]">
         <div className="flex items-center relative w-full max-w-lg mb-[2.5rem]">
-          <PlusIcon className="absolute ml-7"/>
+          <PlusIcon className="absolute ml-7 cursor-pointer" onClick={handleAddTodo} />
           <input
             type="text"
             name="task"

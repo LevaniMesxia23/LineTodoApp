@@ -223,10 +223,11 @@ export function ClickDots({ onClick }) {
   );
 }
 
-export function PlusIcon({ className }) {
+export function PlusIcon({ className, onClick }) {
   return (
     <div className={className}>
       <svg
+        onClick={onClick}
         xmlns="http://www.w3.org/2000/svg"
         width="24"
         height="24"
@@ -308,6 +309,7 @@ ClickDots.propTypes = {
 };
 PlusIcon.propTypes = {
   className: PropTypes.string,
+  onClick: PropTypes.func.isRequired
 };
 SearchIcon.propTypes = {
   onClick: PropTypes.func.isRequired
