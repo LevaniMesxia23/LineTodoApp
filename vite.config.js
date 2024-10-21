@@ -16,7 +16,8 @@ export default defineConfig({
         '@tanstack/react-query', 
         'react',                
         'react-dom',           
-        'aos'                 
+        'aos',
+        'aos/dist/aos.css'           
       ]
     }
   },
