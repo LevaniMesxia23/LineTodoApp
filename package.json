@@ -12,7 +12,8 @@
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "@tanstack/react-query": "^4.x.x"
+    "@tanstack/react-query": "^4.x.x",
+    "@uidotdev/usehooks": "^x.x.x"
   },
   "engines": {
     "node": "18.x"
