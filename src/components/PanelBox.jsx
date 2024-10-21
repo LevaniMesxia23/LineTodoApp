@@ -6,19 +6,16 @@ import {
   ImportantIconGreen,
   CompletedIconGreen,
   CompletedIcon,
-  DeleteIcon
+  DeleteIcon,
 } from "../icons/icons";
 import { useTranslation } from "react-i18next";
 import { deleteTodoById } from "../hooks/useDeleteTodo";
 import { MyContext } from "../context/Context";
 import { useContext } from "react";
 
-
-// import LanguageChanger from "./LanguageChanger";
-
-function PanelBox({userId, taskId, tasks, setTasks, user }) {
+function PanelBox({ userId, taskId, tasks, setTasks, user }) {
   const { t } = useTranslation();
-  const {setClickDot} = useContext(MyContext)
+  const { setClickDot } = useContext(MyContext);
 
   const handleToggleImportant = async () => {
     await UseToggleImportant(taskId, tasks, setTasks, user);
@@ -29,19 +26,16 @@ function PanelBox({userId, taskId, tasks, setTasks, user }) {
   };
 
   const handleDeleteTodo = async () => {
-    await deleteTodoById(userId, taskId, tasks, setTasks, setClickDot)
-  }
+    await deleteTodoById(userId, taskId, tasks, setTasks, setClickDot);
+  };
 
   const taskFind = tasks?.find((task) => task.id === taskId);
 
   return (
-    // clickDot === index && (
-
     <div
-      data-aos="fade-right"
-      className="bg-white absolute py-2 px-[0.88rem] rounded-lg mt-[120px] -ml-[148px] min-w-[11.75rem] z-10 right-4 "
-    >
-      {/* <LanguageChanger /> */}
+    data-aos="fade-right"
+    className="bg-white absolute py-2 px-[0.88rem] rounded-lg -bottom-[150px]  min-w-[11.75rem] z-10 right-2 shadow-md"
+  >
       <ul className="flex flex-col gap-1">
         <div
           onClick={handleToggleImportant}
@@ -75,7 +69,6 @@ function PanelBox({userId, taskId, tasks, setTasks, user }) {
       </ul>
     </div>
   );
-  // );
 }
 
 export default PanelBox;

@@ -48,7 +48,7 @@ function TodoBoxes() {
       {tasks?.map((todo, index) => (
         <div
           key={index}
-          className="bg-white rounded-lg shadow-md p-4 overflow-hidden border border-gray-200 flex flex-col "
+          className="relative bg-white rounded-lg shadow-md p-4  border border-gray-200 flex flex-col" 
         >
           <DateInput />
           <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
@@ -71,6 +71,6 @@ function TodoBoxes() {
       ))}
     </div>
   );
-}
+}  
 
 export default TodoBoxes;
