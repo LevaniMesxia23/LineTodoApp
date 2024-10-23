@@ -45,8 +45,8 @@ function TodoBoxes() {
 
   return (
     <div
-      className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 ${
-        isMedium && "grid-cols-2 gap-6"
+      className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 mb-[5rem]  ${
+        isMedium && "grid-cols-2 gap-6 "
       } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
     >
       {tasks?.filter(item => {
@@ -54,7 +54,7 @@ function TodoBoxes() {
       }).map((todo, index) => (
         <div
           key={index}
-          className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
+          className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col "
         >
           <DateInput />
           <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
