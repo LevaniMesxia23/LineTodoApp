@@ -11,3 +11,26 @@
     padding-right: 0;
   }
 }
+
+@keyframes scaleInfinity {
+  0%, 100% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.animated-infinity {
+  animation: scaleInfinity 1s infinite;
+}
+
+.rainbow-bg {
+  background: linear-gradient(90deg, 
+    green, 
+    rgb(219, 116, 116), 
+    rgb(126, 126, 220), 
+    violet
+  );
+}
+

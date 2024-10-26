@@ -8,14 +8,14 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import DateInput from "../components/DateInput";
 import TodoSearch from "../components/TodoSearch";
-import PaginationTodo from "../components/PaginationTodo"; 
+import PaginationTodo from "../components/PaginationTodo";
 
 function TodoBoxes() {
   const { user, setTasks, tasks, clickDot, isMedium } = useContext(MyContext);
   const userId = user?.id;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const todosPerPage = 5; 
+  const todosPerPage = 5;
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -48,7 +48,7 @@ function TodoBoxes() {
     return <h1>Loading...</h1>;
   }
 
-  const taskImportant = tasks.filter(task => task.important);
+  const taskImportant = tasks.filter((task) => task.important);
 
   const totalPages = Math.ceil(taskImportant.length / todosPerPage);
 
@@ -61,9 +61,15 @@ function TodoBoxes() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen"> 
-      <div className="flex-grow"> 
+    <div className="flex flex-col min-h-screen">
+      <div className="flex-grow">
         <TodoSearch />
+        <div className="flex justify-center items-center lg:ml-[25%] mb-10 gap-6">
+          <h1 className=" uppercase  text-[gray]  font-bold text-[2rem]" >
+            important tasks
+          </h1>
+          <div className="w-6 h-6 bg-orange-400 rounded-full animated-infinity"></div>
+        </div>
         <div
           className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-6 gap-y-6 ${
             isMedium && "grid-cols-2 gap-6"
@@ -72,7 +78,7 @@ function TodoBoxes() {
           {currentTodos.map((todo, index) => (
             <div
               key={index}
-              className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
+              className="relative rounded-lg shadow-md p-4 border border-gray-200 flex flex-col bg-orange-400"
             >
               <DateInput />
               <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
@@ -96,11 +102,11 @@ function TodoBoxes() {
         </div>
       </div>
       <div className="mt-auto flex justify-center">
-      <PaginationTodo
-        count={totalPages}
-        page={currentPage}
-        onPageChange={handlePageChange}
-      />
+        <PaginationTodo
+          count={totalPages}
+          page={currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );
