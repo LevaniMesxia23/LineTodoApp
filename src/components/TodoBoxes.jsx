@@ -48,7 +48,6 @@ function TodoBoxes({ page, todosPerPage }) {
 
   const getRandomLightColor = () => {
     const h = Math.floor(Math.random() * 360);
-
     if (h >= 60 && h <= 180) {
       return getRandomLightColor();
     }
@@ -67,10 +66,9 @@ function TodoBoxes({ page, todosPerPage }) {
   return (
     <>
       <div className="flex justify-center items-center lg:ml-[25%] mb-10 gap-6">
-        <h1 className=" uppercase  text-[gray]  font-bold text-[2rem]">
+        <h1 className="uppercase text-[gray] font-bold text-[2rem]">
           all tasks
         </h1>
-        <div className="w-6 h-6 bg-emerald-200 rainbow-bg rounded-full animated-infinity"></div>
       </div>
 
       <div
@@ -89,8 +87,10 @@ function TodoBoxes({ page, todosPerPage }) {
           .map((todo, index) => (
             <div
               key={todo.id}
-              className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
-              style={{ backgroundColor: todoColors[index] }}
+              className="relative rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
+              style={{
+                backgroundColor: todo.complate ? '#8ac926' : todoColors[index], 
+              }}
             >
               <DateInput />
               <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
@@ -106,7 +106,6 @@ function TodoBoxes({ page, todosPerPage }) {
                   tasks={tasks}
                   setTasks={setTasks}
                   user={user}
-                  index={index}
                 />
               )}
             </div>

@@ -34,3 +34,20 @@
   );
 }
 
+@keyframes fadeToGreen {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #8ac926; 
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.animate-green {
+  animation: fadeToGreen 0.5s ease-in-out forwards; 
+}
+
+

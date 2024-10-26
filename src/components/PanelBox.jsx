@@ -22,7 +22,10 @@ function PanelBox({ userId, taskId, tasks, setTasks, user }) {
   };
 
   const handleToggleComplate = async () => {
-    await UseToggleComplate(taskId, tasks, setTasks, user);
+    const updatedTask = await UseToggleComplate(taskId, tasks, setTasks, user);
+    if (updatedTask) {
+      setClickDot(null); 
+    }
   };
 
   const handleDeleteTodo = async () => {
@@ -33,9 +36,9 @@ function PanelBox({ userId, taskId, tasks, setTasks, user }) {
 
   return (
     <div
-    data-aos="fade-right"
-    className="bg-white absolute py-2 px-[0.88rem] rounded-lg -bottom-[150px]  min-w-[11.75rem] z-10 right-2 shadow-md"
-  >
+      data-aos="fade-right"
+      className="bg-white absolute py-2 px-[0.88rem] rounded-lg -bottom-[150px] min-w-[11.75rem] z-10 right-2 shadow-md"
+    >
       <ul className="flex flex-col gap-1">
         <div
           onClick={handleToggleImportant}
@@ -60,7 +63,7 @@ function PanelBox({ userId, taskId, tasks, setTasks, user }) {
         </div>
 
         <div
-          className=" flex justify-start py-[0.62rem] gap-3 w-full hover:bg-[#C7CAD0] pl-2 cursor-pointer "
+          className="flex justify-start py-[0.62rem] gap-3 w-full hover:bg-[#C7CAD0] pl-2 cursor-pointer"
           onClick={handleDeleteTodo}
         >
           <DeleteIcon />
@@ -79,5 +82,4 @@ PanelBox.propTypes = {
   tasks: PropTypes.array.isRequired,
   setTasks: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  index: PropTypes.number.isRequired,
 };
