@@ -8,6 +8,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import DateInput from "./DateInput";
 import PropTypes from "prop-types";
+import ColorMap from "./ColorMap";
 
 function TodoBoxes({ page, todosPerPage }) {
   const { user, setTasks, tasks, clickDot, isMedium, searchTodo } =
@@ -72,7 +73,7 @@ function TodoBoxes({ page, todosPerPage }) {
       </div>
 
       <div
-        className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 mb-[5rem] ${
+        className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 mb-[3rem] ${
           isMedium && "grid-cols-2 gap-6 "
         } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
       >
@@ -117,6 +118,9 @@ function TodoBoxes({ page, todosPerPage }) {
               )}
             </div>
           ))}
+      </div>
+      <div className=" flex lg:ml-[25%] px-4">
+          <ColorMap />
       </div>
     </>
   );

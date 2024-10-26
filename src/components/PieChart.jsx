@@ -63,12 +63,12 @@ function PieChart() {
             %)
           </li>
           <li>
-            <span style={{ color: "#FFA400" }}>●</span> {t("In Progress")}:{" "}
+            <span style={{ color: "#6E7C7C" }}>●</span> {t("In Progress")}:{" "}
             {inProgressTasks} (
             {((inProgressTasks / totalTasks) * 100).toFixed(1)}%)
           </li>
           <li>
-            <span style={{ color: "#6E7C7C" }}>●</span> {t("Important")}:{" "}
+            <span style={{ color: "#FFA400"}}>●</span> {t("Important")}:{" "}
             {stuckTasks} ({((stuckTasks / totalTasks) * 100).toFixed(1)}%)
           </li>
         </ul>
