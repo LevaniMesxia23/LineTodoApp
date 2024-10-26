@@ -89,7 +89,14 @@ function TodoBoxes({ page, todosPerPage }) {
               key={todo.id}
               className="relative rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
               style={{
-                backgroundColor: todo.complate ? '#8ac926' : todoColors[index], 
+                backgroundColor:
+                  todo.complate && todo.important
+                    ? "#9966CC"
+                    : todo.complate
+                    ? "#8ac926"
+                    : todo.important
+                    ? "orange"
+                    : todoColors[index],
               }}
             >
               <DateInput />

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Result from "../../public/evaluation.png"
 import { ImportantIcon, MyDayIcon } from "../icons/icons";
+import CompletedSvg from "../../public/completeIcon.png"
 
 function SideNav() {
   const { burgerClicked, setBurgerClicked, isMobile } = useContext(MyContext);
@@ -65,6 +66,23 @@ function SideNav() {
             <li className=" flex gap-3 ] py-[0.625rem] pl-4 w-full rounded ">
               <ImportantIcon />
               <span className="z-50">{t("Important")}</span>
+            </li>
+          </NavLink>
+
+          <NavLink
+            to="/complete"
+            className={({ isActive }) =>
+              `w-full flex items-center p-2 rounded-md transition-all duration-300 ${
+                isActive
+                  ? "bg-[#C7CAD0] scale-105"
+                  : "bg-transparent hover:bg-[#D0D4D4]"
+              }`
+            }
+            onClick={handleLinkClick}
+          >
+            <li className=" flex gap-3 ] py-[0.625rem] pl-4 w-full rounded ">
+              <img src={CompletedSvg} alt="" className="w-[22px] h-[22px]"/>
+              <span className="z-50">{t("Complete")}</span>
             </li>
           </NavLink>
 

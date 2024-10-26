@@ -8,6 +8,7 @@ import { MyProvider } from './context/Context';
 import ImportantPage from "./pages/ImportantPage";
 import ResultsPage from "./pages/ResultPage";
 import UserLayout from "./layouts/UserLayout";
+import CompletePage from "./pages/CompletePage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route element={<Layout />}>
               <Route path="/" element={<HomePage />} />
               <Route path="/important" element={<ImportantPage />} />
+              <Route path="/complete" element={<CompletePage />} />
               <Route path="/resultspage" element={<ResultsPage />} />
 
             </Route>
