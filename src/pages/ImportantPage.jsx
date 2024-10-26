@@ -1,17 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { getTodos } from "../api/Todos";
 import { MyContext } from "../context/Context";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ClickDots } from "../icons/icons";
 import PanelBox from "../components/PanelBox";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import DateInput from "../components/DateInput";
 import TodoSearch from "../components/TodoSearch";
+import PaginationTodo from "../components/PaginationTodo"; 
 
 function TodoBoxes() {
-  const { user, setTasks, tasks, clickDot,isMedium } = useContext(MyContext);
+  const { user, setTasks, tasks, clickDot, isMedium } = useContext(MyContext);
   const userId = user?.id;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const todosPerPage = 5; 
 
   useEffect(() => {
     AOS.init({ duration: 500 });
@@ -44,43 +48,61 @@ function TodoBoxes() {
     return <h1>Loading...</h1>;
   }
 
-  const taskImportant = tasks.filter(task => task.important)
+  const taskImportant = tasks.filter(task => task.important);
+
+  const totalPages = Math.ceil(taskImportant.length / todosPerPage);
+
+  const indexOfLastTodo = currentPage * todosPerPage;
+  const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
+  const currentTodos = taskImportant.slice(indexOfFirstTodo, indexOfLastTodo);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
 
   return (
-    <>
-    <TodoSearch />
-    
-    <div
-        className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-6 gap-y-6 ${
-          isMedium && "grid-cols-2 gap-6"
-        } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
-      >
-      {taskImportant?.map((todo, index) => (
+    <div className="flex flex-col min-h-screen"> 
+      <div className="flex-grow"> 
+        <TodoSearch />
         <div
-          key={index}
-          className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col "
+          className={`px-4 grid lg:grid lg:grid-cols-3 lg:gap-6 gap-y-6 ${
+            isMedium && "grid-cols-2 gap-6"
+          } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
         >
-          <DateInput />
-          <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
-            {todo.description}
-          </span>
-          <div className="flex justify-end mt-[1.62rem]">
-            <ClickDots onClick={() => handleClickDots(index)} />
-          </div>
-          {clickDot === index && (
-            <PanelBox
-              userId={userId}
-              taskId={todo.id}
-              tasks={tasks}
-              setTasks={setTasks}
-              user={user}
-              index={index}
-            />
-          )}
+          {currentTodos.map((todo, index) => (
+            <div
+              key={index}
+              className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
+            >
+              <DateInput />
+              <span className="block px-[10px] text-gray-800 text-sm md:text-base lg:text-lg font-medium whitespace-pre-wrap overflow-ellipsis">
+                {todo.description}
+              </span>
+              <div className="flex justify-end mt-[1.62rem]">
+                <ClickDots onClick={() => handleClickDots(index)} />
+              </div>
+              {clickDot === index && (
+                <PanelBox
+                  userId={userId}
+                  taskId={todo.id}
+                  tasks={tasks}
+                  setTasks={setTasks}
+                  user={user}
+                  index={index}
+                />
+              )}
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
+      <div className="mt-auto flex justify-center">
+      <PaginationTodo
+        count={totalPages}
+        page={currentPage}
+        onPageChange={handlePageChange}
+      />
+      </div>
     </div>
-  </>
   );
 }
 

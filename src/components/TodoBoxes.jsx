@@ -7,8 +7,9 @@ import PanelBox from "./PanelBox";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import DateInput from "./DateInput";
+import PropTypes from "prop-types"
 
-function TodoBoxes() {
+function TodoBoxes({ page, todosPerPage }) {
   const { user, setTasks, tasks, clickDot, isMedium, searchTodo } = useContext(MyContext);
   const userId = user?.id;
 
@@ -43,17 +44,22 @@ function TodoBoxes() {
     return <h1>Loading...</h1>;
   }
 
+  const startIndex = (page - 1) * todosPerPage;
+  const currentTodos = tasks?.slice(startIndex, startIndex + todosPerPage);
+
   return (
     <div
-      className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 mb-[5rem]  ${
+      className={`px-4 grid lg:grid lg:grid-cols-3 gap-6 lg:gap-6 mb-[5rem] ${
         isMedium && "grid-cols-2 gap-6 "
       } lg:ml-[25%] md:grid md:grid-cols-2 md:gap-6`}
     >
-      {tasks?.filter(item => {
-        return searchTodo.toLowerCase() === '' ? true : item.description.toLowerCase().includes(searchTodo.toLowerCase());
+      {currentTodos?.filter(item => {
+        return searchTodo.toLowerCase() === '' 
+          ? true 
+          : item.description.toLowerCase().includes(searchTodo.toLowerCase());
       }).map((todo, index) => (
         <div
-          key={index}
+          key={todo.id}
           className="relative bg-white rounded-lg shadow-md p-4 border border-gray-200 flex flex-col "
         >
           <DateInput />
@@ -78,5 +84,10 @@ function TodoBoxes() {
     </div>
   );
 }
+
+TodoBoxes.propTypes = {
+  page: PropTypes.number.isRequired,        
+  todosPerPage: PropTypes.number.isRequired, 
+};
 
 export default TodoBoxes;
