@@ -10,7 +10,7 @@ function PaginationTodo({ count, page, onPageChange }) {
           count={count}
           page={page}
           onChange={onPageChange}
-          color="primary"
+          variant="outlined" color="primary"
         />
       </Stack>
     </div>
