@@ -1,10 +1,5 @@
 {
-  "rewrites": [
-    { "source": "/signin", "destination": "/signin" },
-    { "source": "/signup", "destination": "/signup" },
-    { "source": "/", "destination": "/" },
-    { "source": "/important", "destination": "/important" },
-    { "source": "/complete", "destination": "/complete" },
-    { "source": "/resultspage", "destination": "/resultspage" }
+  "rewrites":  [
+    {"source": "/(.*)", "destination": "/"}
   ]
 }
