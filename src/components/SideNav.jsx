@@ -33,11 +33,11 @@ function SideNav() {
           burgerClicked ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <ul className="flex flex-col items-start p-4 space-y-4">
+        <ul className="flex flex-col items-start p-4 space-y-4 ">
           <NavLink
             to="/"
             className={({ isActive }) =>
-              `w-full flex items-center p-2 rounded-md transition-all duration-300 ${
+              `w-full flex items-center p-2 rounded-md transition-all duration-300 overflow-hidden ${
                 isActive
                   ? "bg-[#C7CAD0] scale-105"
                   : "bg-transparent hover:bg-[#D0D4D4]"
@@ -55,7 +55,7 @@ function SideNav() {
           <NavLink
             to="/important"
             className={({ isActive }) =>
-              `w-full flex items-center p-2 rounded-md transition-all duration-300 ${
+              `w-full flex items-center p-2 rounded-md transition-all duration-300 overflow-hidden ${
                 isActive
                   ? "bg-[#C7CAD0] scale-105"
                   : "bg-transparent hover:bg-[#D0D4D4]"
@@ -72,7 +72,7 @@ function SideNav() {
           <NavLink
             to="/complete"
             className={({ isActive }) =>
-              `w-full flex items-center p-2 rounded-md transition-all duration-300 ${
+              `w-full flex items-center p-2 rounded-md transition-all duration-300 overflow-hidden ${
                 isActive
                   ? "bg-[#C7CAD0] scale-105"
                   : "bg-transparent hover:bg-[#D0D4D4]"
@@ -89,7 +89,7 @@ function SideNav() {
           <NavLink
             to="/resultspage"
             className={({ isActive }) =>
-              `w-full flex items-center p-2 rounded-md transition-all duration-300 ${
+              `w-full flex items-center p-2 rounded-md transition-all duration-300 overflow-hidden ${
                 isActive
                   ? "bg-[#C7CAD0] scale-105"
                   : "bg-transparent hover:bg-[#D0D4D4]"
