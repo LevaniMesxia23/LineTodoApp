@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Result from "../../public/evaluation.png"
 import { ImportantIcon, MyDayIcon } from "../icons/icons";
-import CompletedSvg from "../../public/completeIcon.png"
+import CompletedSvg from "../../public/complete.png"
 
 function SideNav() {
   const { burgerClicked, setBurgerClicked, isMobile } = useContext(MyContext);
