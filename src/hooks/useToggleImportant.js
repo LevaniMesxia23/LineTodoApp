@@ -6,7 +6,7 @@ export const UseToggleImportant = async (taskId, tasks, setTasks, user) => {
   if (taskToUpdate) {
     const updatedTask = {
       ...taskToUpdate,
-      important: !taskToUpdate.important,
+      isImportant: !taskToUpdate.isImportant,
     };
 
     setTasks((prevTasks) =>
@@ -22,7 +22,7 @@ export const UseToggleImportant = async (taskId, tasks, setTasks, user) => {
 
       console.log("Task updated:", data);
 
-      console.log("Updated Task Important Value:", updatedTask.important);
+      console.log("Updated Task Important Value:", updatedTask.isImportant);
     } catch (error) {
       console.error("Error updating task:", error.message);
     }

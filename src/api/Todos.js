@@ -13,7 +13,7 @@ export const getTodos = async (user_id) => {
 export const addTodo = async ({ description, user_id }) => {
   const { data, error } = await supabase
     .from("todos")
-    .insert([{ description, user_id, complate: false, important: false }]);
+    .insert([{ description, user_id, isComplated: false, isImportant: false }]);
 
   if (error) throw error;
   return data;
@@ -22,7 +22,7 @@ export const addTodo = async ({ description, user_id }) => {
 export const markImportant = async ({ userId, updatedTask, taskId }) => {
   const { data, error } = await supabase
     .from("todos")
-    .update({ important: updatedTask.important })
+    .update({ isImportant: updatedTask.isImportant })
     .eq("id", taskId)
     .eq("user_id", userId);
 
@@ -33,7 +33,7 @@ export const markImportant = async ({ userId, updatedTask, taskId }) => {
 export const markcomplate = async ({ userId, updatedTask, taskId }) => {
   const { data, error } = await supabase
     .from("todos")
-    .update({ complate: updatedTask.complate })
+    .update({ isComplated: updatedTask.isComplated })
     .eq("id", taskId)
     .eq("user_id", userId);
 

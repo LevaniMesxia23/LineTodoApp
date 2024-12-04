@@ -43,21 +43,21 @@ function PanelBox({ userId, taskId, tasks, setTasks, user }) {
         <div
           onClick={handleToggleImportant}
           className={`flex justify-start py-[0.62rem] hover:bg-gray-100 border-b-[1px] rounded-md ${
-            taskFind?.important && "text-[#8ac926]"
+            taskFind?.isImportant && "text-[#8ac926]"
           } gap-3 w-full pl-2 cursor-pointer`}
         >
-          {taskFind?.important ? <ImportantIconGreen /> : <ImportanceIcon />}
+          {taskFind?.isImportant ? <ImportantIconGreen /> : <ImportanceIcon />}
           <li>{t("Important")}</li>
         </div>
 
         <div
           onClick={handleToggleComplate}
           className={`flex justify-start py-[0.62rem] gap-3 w-full hover:bg-gray-100 pl-2 rounded-md cursor-pointer border-b-[1px] ${
-            taskFind?.complate ? "text-[#8ac926]" : ""
+            taskFind?.isComplated ? "text-[#8ac926]" : ""
           }`}
         >
-          {taskFind?.complate ? <CompletedIconGreen /> : <CompletedIcon />}
-          <li className={taskFind?.complate ? "line-through" : ""}>
+          {taskFind?.isComplated ? <CompletedIconGreen /> : <CompletedIcon />}
+          <li className={taskFind?.isComplated ? "line-through" : ""}>
             {t("Completed")}
           </li>
         </div>

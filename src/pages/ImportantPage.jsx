@@ -48,7 +48,7 @@ function TodoBoxes() {
     return <h1>Loading...</h1>;
   }
 
-  const taskImportant = tasks.filter((task) => task.important);
+  const taskImportant = tasks.filter((task) => task.isImportant);
 
   const totalPages = Math.ceil(taskImportant.length / todosPerPage);
 

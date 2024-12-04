@@ -91,11 +91,11 @@ function TodoBoxes({ page, todosPerPage }) {
               className="relative rounded-lg shadow-md p-4 border border-gray-200 flex flex-col"
               style={{
                 backgroundColor:
-                  todo.complate && todo.important
+                  todo.isComplated && todo.isImportant
                     ? "#9966CC"
-                    : todo.complate
+                    : todo.isComplated
                     ? "#8ac926"
-                    : todo.important
+                    : todo.isImportant
                     ? "orange"
                     : todoColors[index],
               }}

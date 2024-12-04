@@ -6,7 +6,7 @@ export const UseToggleComplate = async (taskId, tasks, setTasks, user) => {
   if (taskToUpdate) {
     const updatedTask = {
       ...taskToUpdate,
-      complate: !taskToUpdate.complate,
+      isComplated: !taskToUpdate.isComplated,
     };
 
     setTasks((prevTasks) =>
@@ -21,8 +21,8 @@ export const UseToggleComplate = async (taskId, tasks, setTasks, user) => {
       });
 
       console.log("Task updated:", data);
-      console.log("Updated Task Important Value:", updatedTask.important);
-      console.log("Updated Task Complate Value:", updatedTask.complate);
+      console.log("Updated Task Important Value:", updatedTask.isImportant);
+      console.log("Updated Task Complate Value:", updatedTask.isComplated);
 
       return updatedTask; 
     } catch (error) {
