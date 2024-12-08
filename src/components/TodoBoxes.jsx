@@ -35,7 +35,7 @@ function TodoBoxes({ page, todosPerPage }) {
 
   const { data: todos, isLoading } = useQuery({
     queryFn: () => getTodos(userId),
-    queryKey: ["todos", userId],
+    queryKey: ["todo", userId],
   });
 
   useEffect(() => {

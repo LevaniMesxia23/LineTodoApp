@@ -7,7 +7,7 @@ const useAddTodo  = () => {
   return useMutation({
     mutationFn: addTodo,
     onSuccess: () => {
-      queryClient.invalidateQueries(["todos"]);
+      queryClient.invalidateQueries(["todo"]);
       console.log("Todo added successfully!");
     },
   });

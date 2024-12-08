@@ -26,8 +26,8 @@ function SideNav() {
         ></div>
       )}
 
-      <nav
-        className={`fixed left-0 top-[80px] bottom-0 ${
+      <nav 
+        className={`fixed left-0 top-0 bottom-0 pt-[80px] ${
           isMobile ? "w-1/2" : "w-1/3"
         } bg-white shadow-lg transform transition-transform duration-300 z-10 lg:left-1/4 lg:w-1/4 lg:top-0 lg:pt-[5.1rem] lg:overflow-y-auto ${
           burgerClicked ? "translate-x-0" : "-translate-x-full"
